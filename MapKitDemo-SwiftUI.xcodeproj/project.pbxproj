@@ -6,17 +6,23 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		18FE8EA62EACE752005F0003 /* LocationDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE8EA12EACE752005F0003 /* LocationDetails.swift */; };
+		18FE8EA72EACE752005F0003 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE8EA22EACE752005F0003 /* LocationManager.swift */; };
+		18FE8EA82EACE752005F0003 /* MapKitDemo_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE8EA32EACE752005F0003 /* MapKitDemo_SwiftUIApp.swift */; };
+		18FE8EA92EACE752005F0003 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18FE8EA42EACE752005F0003 /* MapView.swift */; };
+		18FE8EAA2EACE752005F0003 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18FE8E9F2EACE752005F0003 /* Assets.xcassets */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		18FE8E892EAC8452005F0003 /* MapKitDemo-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "MapKitDemo-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		18FE8E9F2EACE752005F0003 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		18FE8EA02EACE752005F0003 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		18FE8EA12EACE752005F0003 /* LocationDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDetails.swift; sourceTree = "<group>"; };
+		18FE8EA22EACE752005F0003 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		18FE8EA32EACE752005F0003 /* MapKitDemo_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDemo_SwiftUIApp.swift; sourceTree = "<group>"; };
+		18FE8EA42EACE752005F0003 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXFileSystemSynchronizedRootGroup section */
-		18FE8E8B2EAC8452005F0003 /* MapKitDemo-SwiftUI */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = "MapKitDemo-SwiftUI";
-			sourceTree = "<group>";
-		};
-/* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		18FE8E862EAC8452005F0003 /* Frameworks */ = {
@@ -32,7 +38,7 @@
 		18FE8E802EAC8452005F0003 = {
 			isa = PBXGroup;
 			children = (
-				18FE8E8B2EAC8452005F0003 /* MapKitDemo-SwiftUI */,
+				18FE8EA52EACE752005F0003 /* MapKitDemo-SwiftUI */,
 				18FE8E8A2EAC8452005F0003 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +49,59 @@
 				18FE8E892EAC8452005F0003 /* MapKitDemo-SwiftUI.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		18FE8EA52EACE752005F0003 /* MapKitDemo-SwiftUI */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EAC2EACE761005F0003 /* Application */,
+				18FE8EAE2EACE782005F0003 /* Modules */,
+				18FE8EAD2EACE770005F0003 /* Helper */,
+				18FE8E9F2EACE752005F0003 /* Assets.xcassets */,
+				18FE8EA02EACE752005F0003 /* Info.plist */,
+			);
+			path = "MapKitDemo-SwiftUI";
+			sourceTree = "<group>";
+		};
+		18FE8EAC2EACE761005F0003 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EA32EACE752005F0003 /* MapKitDemo_SwiftUIApp.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		18FE8EAD2EACE770005F0003 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EA22EACE752005F0003 /* LocationManager.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		18FE8EAE2EACE782005F0003 /* Modules */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EAF2EACE812005F0003 /* Map */,
+				18FE8EB02EACE818005F0003 /* LocationDetails */,
+			);
+			path = Modules;
+			sourceTree = "<group>";
+		};
+		18FE8EAF2EACE812005F0003 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EA42EACE752005F0003 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		18FE8EB02EACE818005F0003 /* LocationDetails */ = {
+			isa = PBXGroup;
+			children = (
+				18FE8EA12EACE752005F0003 /* LocationDetails.swift */,
+			);
+			path = LocationDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -59,9 +118,6 @@
 			buildRules = (
 			);
 			dependencies = (
-			);
-			fileSystemSynchronizedGroups = (
-				18FE8E8B2EAC8452005F0003 /* MapKitDemo-SwiftUI */,
 			);
 			name = "MapKitDemo-SwiftUI";
 			packageProductDependencies = (
@@ -109,6 +165,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FE8EAA2EACE752005F0003 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +176,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18FE8EA62EACE752005F0003 /* LocationDetails.swift in Sources */,
+				18FE8EA72EACE752005F0003 /* LocationManager.swift in Sources */,
+				18FE8EA82EACE752005F0003 /* MapKitDemo_SwiftUIApp.swift in Sources */,
+				18FE8EA92EACE752005F0003 /* MapView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,11 +317,16 @@
 				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MapKitDemo-SwiftUI/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MapKit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show your current position on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -269,12 +335,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Aditya.MapKitDemo-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -288,11 +358,16 @@
 				DEVELOPMENT_TEAM = Z37X84PRTQ;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MapKitDemo-SwiftUI/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = MapKit;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app needs your location to show your current position on the map.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -301,12 +376,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.Aditya.MapKitDemo-SwiftUI";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
