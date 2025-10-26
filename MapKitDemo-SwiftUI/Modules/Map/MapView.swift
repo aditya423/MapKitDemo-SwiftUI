@@ -10,7 +10,8 @@ import MapKit
 import Combine
 
 struct MapView: View {
-    private static let defaultCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 19.2062, longitude: 72.8485)
+    
+    private static let defaultCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 25.7602, longitude: -80.1959)
     private static let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     @StateObject private var locationManager: LocationManager = LocationManager()
     @State private var cameraPosition: MapCameraPosition = .region(
@@ -21,13 +22,14 @@ struct MapView: View {
     @State private var searchText: String = ""
     @State private var searchResults: [MKMapItem] = []
     @State private var selectedMapItem: MKMapItem?
+    @State private var showDetails: Bool = false
     
     var body: some View {
         ZStack(alignment: .top) {
             Map(position: $cameraPosition, selection: $selectedMapItem) {
                 // Marker - for custom image
                 // Annotation - for custom view
-                Annotation("Current Location", coordinate: annotationCoordinate) {
+                Annotation(StringConstants.annotation.rawValue, coordinate: annotationCoordinate) {
                     ZStack {
                         Circle().frame(width: 32, height: 32).foregroundStyle(.blue.opacity(0.25))
                         Circle().frame(width: 20, height: 20).foregroundStyle(.white)
@@ -49,11 +51,11 @@ struct MapView: View {
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             
-            TextField("Search for a location", text: $searchText)
+            TextField(StringConstants.searchPlaceholder.rawValue, text: $searchText)
                 .font(.subheadline)
                 .padding()
                 .background(.white)
-                .clipShape(RoundedRectangle(cornerRadius: 10))
+                .clipShape(RoundedRectangle(cornerRadius: FloatConstants.cornerRadius.rawValue))
                 .padding([.top, .bottom], 12)
                 .padding([.leading, .trailing], 70)
                 .shadow(radius: 5)
@@ -75,7 +77,13 @@ struct MapView: View {
             }
         }
         .onChange(of: selectedMapItem) { oldValue, newValue in
-            print("present sheet")
+            showDetails = newValue != nil
+        }
+        .sheet(isPresented: $showDetails) {
+            LocationDetails(selectedMapItem: $selectedMapItem, isShow: $showDetails)
+                .presentationDetents([.height(340)])
+                .presentationBackgroundInteraction(.enabled(upThrough: .height(340)))
+                .presentationCornerRadius(FloatConstants.cornerRadius.rawValue)
         }
     }
 }
