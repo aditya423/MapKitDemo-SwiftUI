@@ -11,26 +11,22 @@ import MapKit
 import CoreLocation
 
 class LocationManager: NSObject, ObservableObject {
+    
+    // MARK: Variables
     private let manager = CLLocationManager()
     @Published var userLocation: CLLocationCoordinate2D?
     @Published var authorizationStatus: CLAuthorizationStatus = .notDetermined
     
+    // MARK: Init
     override init() {
         super.init()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
     }
     
+    // MARK: Methods
     func requestPermission() {
         manager.requestWhenInUseAuthorization()
-    }
-    
-    func searchPlaces(text: String, region: MKCoordinateRegion) async -> [MKMapItem] {
-        let request = MKLocalSearch.Request()
-        request.region = region
-        request.naturalLanguageQuery = text
-        let results = try? await MKLocalSearch(request: request).start()
-        return results?.mapItems ?? []
     }
 }
 

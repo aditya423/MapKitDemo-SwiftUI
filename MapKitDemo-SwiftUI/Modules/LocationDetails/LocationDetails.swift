@@ -10,12 +10,17 @@ import MapKit
 
 struct LocationDetails: View {
     
+    // MARK: Variables
     @Binding var selectedMapItem: MKMapItem?
     @Binding var isShow: Bool
+    @Binding var isGetDirections: Bool
     @State private var lookAroundScene: MKLookAroundScene?
     
+    // MARK: Body
     var body: some View {
         VStack {
+            
+            // Location - name and address
             HStack {
                 VStack(alignment: .leading) {
                     Text(selectedMapItem?.name ?? "")
@@ -40,6 +45,7 @@ struct LocationDetails: View {
                 }
             }
             
+            // Loation - look around
             if let lookAroundScene {
                 LookAroundPreview(initialScene: lookAroundScene)
                     .frame(height: 200)
@@ -48,6 +54,7 @@ struct LocationDetails: View {
                 ContentUnavailableView(StringConstants.noPreviewAvailable.rawValue, systemImage: ImageConstants.systemNoPreview.rawValue)
             }
             
+            // Location - open in map or get directions
             HStack {
                 CustomButtonView(title: ButtonTitles.openInMaps.rawValue, bgColor: .green) {
                     if let selectedMapItem {
@@ -59,7 +66,7 @@ struct LocationDetails: View {
                     .frame(width: FloatConstants.cornerRadius.rawValue)
                 
                 CustomButtonView(title: ButtonTitles.getDirections.rawValue, bgColor: .blue) {
-                    print()
+                    isGetDirections = true
                 }
             }
             .frame(maxWidth: .infinity)
@@ -73,7 +80,10 @@ struct LocationDetails: View {
         }
         .padding()
     }
-    
+}
+
+// MARK: LocationDetails Methods
+extension LocationDetails {
     private func fetchLookAroundPreview() {
         if let selectedMapItem {
             lookAroundScene = nil
@@ -86,5 +96,5 @@ struct LocationDetails: View {
 }
 
 #Preview {
-    LocationDetails(selectedMapItem: .constant(nil), isShow: .constant(false))
+    LocationDetails(selectedMapItem: .constant(nil), isShow: .constant(false), isGetDirections: .constant(false))
 }
