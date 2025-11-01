@@ -14,6 +14,8 @@ enum FloatConstants: CGFloat {
 enum ButtonTitles: String {
     case openInMaps = "Open in Maps"
     case getDirections = "Get Directions"
+    case recenter = "Recenter"
+    case reset = "Reset"
 }
 
 enum ImageConstants: String {

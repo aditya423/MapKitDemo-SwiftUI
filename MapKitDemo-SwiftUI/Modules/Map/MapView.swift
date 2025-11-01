@@ -12,7 +12,7 @@ import Combine
 struct MapView: View {
     
     // MARK: Variables
-    private static let defaultCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 25.7602, longitude: -80.1959)
+    private static let defaultCenter: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 37.7749, longitude: -122.4194)
     private static let span: MKCoordinateSpan = MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)
     @StateObject private var locationManager: LocationManager = LocationManager()
     @State private var cameraPosition: MapCameraPosition = .region(
@@ -41,8 +41,15 @@ struct MapView: View {
             }
             .ignoresSafeArea(.keyboard, edges: .bottom)
             
-            // Search textfield
-            searchBar
+            VStack {
+                // Search textfield
+                searchBar
+                
+                Spacer()
+                
+                // Reset button
+                resetButtons
+            }
         }
         .onAppear {
             locationManager.requestPermission()
@@ -124,6 +131,26 @@ extension MapView {
                 }
             }
     }
+    
+    private var resetButtons: some View {
+        HStack {
+            if cameraPosition != .region(
+                MKCoordinateRegion(center: locationManager.userLocation ?? MapView.defaultCenter, span: MapView.span)
+            ) {
+                CustomButtonView(title: ButtonTitles.recenter.rawValue, bgColor: .green) {
+                    resetCamera()
+                }
+            }
+            if !searchResults.isEmpty {
+                CustomButtonView(title: ButtonTitles.reset.rawValue, bgColor: .red) {
+                    resetMap()
+                }
+            }
+        }
+        .padding([.top, .bottom], 12)
+        .padding([.leading, .trailing], 70)
+        .shadow(radius: 5)
+    }
 }
 
 // MARK: MapView Methods
@@ -158,6 +185,34 @@ extension MapView {
                     }
                 }
             }
+        }
+    }
+    
+    func resetCamera() {
+        withAnimation(.snappy) {
+            let userLocation = locationManager.userLocation ?? MapView.defaultCenter
+            cameraPosition = .region(
+                MKCoordinateRegion(center: userLocation, span: MapView.span)
+            )
+            annotationCoordinate = userLocation
+        }
+    }
+    
+    func resetMap() {
+        withAnimation(.snappy) {
+            let userLocation = locationManager.userLocation ?? MapView.defaultCenter
+            cameraPosition = .region(
+                MKCoordinateRegion(center: userLocation, span: MapView.span)
+            )
+            annotationCoordinate = userLocation
+            searchResults.removeAll()
+            selectedMapItem = nil
+            route = nil
+            routeDestination = nil
+            isRouteDisplaying = false
+            isGetDirections = false
+            showDetails = false
+            searchText = ""
         }
     }
 }
