@@ -47,7 +47,7 @@ struct MapView: View {
                 
                 Spacer()
                 
-                // Reset button
+                // Reset buttons
                 resetButtons
             }
         }
