@@ -21,29 +21,7 @@ struct LocationDetails: View {
         VStack {
             
             // Location - name and address
-            HStack {
-                VStack(alignment: .leading) {
-                    Text(selectedMapItem?.name ?? "")
-                        .font(.title2)
-                        .fontWeight(.semibold)
-                    Text(selectedMapItem?.placemark.title ?? "")
-                        .font(.footnote)
-                        .foregroundStyle(.gray)
-                        .lineLimit(3)
-                }
-                
-                Spacer()
-                
-                Button {
-                    isShow.toggle()
-                    selectedMapItem = nil
-                } label: {
-                    Image(systemName: ImageConstants.systemCancel.rawValue)
-                        .resizable()
-                        .frame(width: 24, height: 24)
-                        .foregroundStyle(.gray)
-                }
-            }
+            locationNameAddress
             
             // Loation - look around
             if let lookAroundScene {
@@ -55,22 +33,7 @@ struct LocationDetails: View {
             }
             
             // Location - open in map or get directions
-            HStack {
-                CustomButtonView(title: ButtonTitles.openInMaps.rawValue, bgColor: .green) {
-                    if let selectedMapItem {
-                        selectedMapItem.openInMaps()
-                    }
-                }
-                
-                Spacer()
-                    .frame(width: FloatConstants.cornerRadius.rawValue)
-                
-                CustomButtonView(title: ButtonTitles.getDirections.rawValue, bgColor: .blue) {
-                    isGetDirections = true
-                }
-            }
-            .frame(maxWidth: .infinity)
-            .padding(.top, 5)
+            bottomButtons
         }
         .onAppear {
             fetchLookAroundPreview()
@@ -79,6 +42,54 @@ struct LocationDetails: View {
             fetchLookAroundPreview()
         }
         .padding()
+    }
+}
+
+// MARK: LocationDetails SubViews
+extension LocationDetails {
+    private var locationNameAddress: some View {
+        HStack {
+            VStack(alignment: .leading) {
+                Text(selectedMapItem?.name ?? "")
+                    .font(.title2)
+                    .fontWeight(.semibold)
+                Text(selectedMapItem?.placemark.title ?? "")
+                    .font(.footnote)
+                    .foregroundStyle(.gray)
+                    .lineLimit(3)
+            }
+            
+            Spacer()
+            
+            Button {
+                isShow.toggle()
+                selectedMapItem = nil
+            } label: {
+                Image(systemName: ImageConstants.systemCancel.rawValue)
+                    .resizable()
+                    .frame(width: 24, height: 24)
+                    .foregroundStyle(.gray)
+            }
+        }
+    }
+    
+    private var bottomButtons: some View {
+        HStack {
+            CustomButtonView(title: ButtonTitles.openInMaps.rawValue, bgColor: .green) {
+                if let selectedMapItem {
+                    selectedMapItem.openInMaps()
+                }
+            }
+            
+            Spacer()
+                .frame(width: FloatConstants.cornerRadius.rawValue)
+            
+            CustomButtonView(title: ButtonTitles.getDirections.rawValue, bgColor: .blue) {
+                isGetDirections = true
+            }
+        }
+        .frame(maxWidth: .infinity)
+        .padding(.top, 5)
     }
 }
 
