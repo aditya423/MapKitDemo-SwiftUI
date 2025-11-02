@@ -1,5 +1,5 @@
 
-# MapKit in SwiftUI - iOS 17+
+# MapKit in SwiftUI - iOS 16+
 
 ### Screenshots
 <p align="left">
